@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace App\GameOfLife;
+namespace App\GameOfLife\Config;
 
 /**
  * Class LiveCellConfig
  *
  * provides an oop way to make a specific row->cell alive in the grid
  *
- * @package App\GameOfLife
+ * @package App\GameOfLife\Config
  */
 class LiveCellConfig
 {
