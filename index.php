@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
 
 use App\GameOfLife\Board;
+use App\GameOfLife\Config\GameConfig;
 use App\GameOfLife\Factory\GridFactory;
-use App\GameOfLife\Game;
-use App\GameOfLife\LiveCellConfig;
+use App\GameOfLife\GameOfLife;
+use App\GameOfLife\Config\LiveCellConfig;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -15,8 +16,9 @@ $config = [
     new LiveCellConfig(2, 3),
 ];
 
-$board = new Board(new GridFactory(...$config), 4, 5);
-$game  = new Game($board, 5);
+$board = new Board(new GridFactory(...$config), 5, 6);
+$grid  = $board->getGrid();
+$game = new GameOfLife(new GameConfig(5, false, $board));
 $game->run();
 
 
