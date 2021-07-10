@@ -15,9 +15,15 @@ docker container run -d --name game_of_life --publish 80:80 --mount type=bind,so
 ### Enter the container 
 `docker exec -it game_of_life bash` 
 
-**Install phpunit and setup autoloading by running:** `cd /var/www/html && composer install` 
+#### Install phpunit and setup autoloading by running:
+ `cd /var/www/html && composer install` 
 
-**Visit:** http://localhost
+#### Run test: 
+`./vendor/bin/phpunit tests --testdox`
+
+#### Visit: http://localhost
+
+
 
     
     
