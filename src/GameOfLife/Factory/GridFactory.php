@@ -3,7 +3,7 @@
 namespace App\GameOfLife\Factory;
 
 use App\GameOfLife\Cell;
-use App\GameOfLife\LiveCellConfig;
+use App\GameOfLife\Config\LiveCellConfig;
 use App\GameOfLife\ValueObjects\CellState;
 
 use function array_fill;
@@ -23,7 +23,7 @@ class GridFactory
     public function make(int $cols, int $rows): array
     {
         $grid = array_fill(0, $cols, null);
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < $cols; $i++) {
             $grid[$i] = array_fill(0, $rows, new Cell(CellState::dead()));
         }
 
@@ -37,13 +37,13 @@ class GridFactory
                 }
             }
         } else {
-            $this->fillCellWithRandomState($grid, $cols, $rows);
+            $this->fillCellsWithRandomState($grid, $cols, $rows);
         }
 
         return $grid;
     }
 
-    private function fillCellWithRandomState(array &$grid, int $cols, int $rows): void
+    private function fillCellsWithRandomState(array &$grid, int $cols, int $rows): void
     {
         for ($i = 0; $i < $cols; $i++) {
             for ($j = 0; $j < $rows; $j++) {
