@@ -29,12 +29,12 @@ class Cell
         return $this->state->value() === CellState::IS_LIVE;
     }
 
-    public function inOverPopuatedNeighbourHood(): bool
+    public function isInOverPopulatedNeighbourHood(): bool
     {
         return $this->totalLiveNeighbours > 3;
     }
 
-    public function inUnderPopuatedNeighbourHood(): bool
+    public function isInUnderPopulatedNeighbourHood(): bool
     {
         return $this->totalLiveNeighbours < 2;
     }

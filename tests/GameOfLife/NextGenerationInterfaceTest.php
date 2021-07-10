@@ -7,11 +7,12 @@ use App\GameOfLife\Config\LiveCellConfig;
 use App\GameOfLife\Factory\GridFactory;
 use App\GameOfLife\NextGenerationIgnoredEdge;
 use App\GameOfLife\NextGenerationWrapAroundEdge;
-use App\GameOfLife\ValueObjects\CellState;
 use PHPUnit\Framework\TestCase;
 
 class NextGenerationInterfaceTest extends TestCase
 {
+
+    private const IS_LIVE = 1;
 
     public function testGenerateNextGenerationWrapAroundEdgeAlgo(): void
     {
@@ -32,10 +33,10 @@ class NextGenerationInterfaceTest extends TestCase
 
         self::assertIsArray($next);
         self::assertNotEmpty($next);
-        self::assertSame(CellState::IS_LIVE, $next[1][3]->getState()->value());
-        self::assertSame(CellState::IS_LIVE, $next[1][4]->getState()->value());
-        self::assertSame(CellState::IS_LIVE, $next[2][3]->getState()->value());
-        self::assertSame(CellState::IS_LIVE, $next[2][4]->getState()->value());
+        self::assertSame(self::IS_LIVE, $next[1][3]->getState()->value());
+        self::assertSame(self::IS_LIVE, $next[1][4]->getState()->value());
+        self::assertSame(self::IS_LIVE, $next[2][3]->getState()->value());
+        self::assertSame(self::IS_LIVE, $next[2][4]->getState()->value());
     }
 
     public function testGenerateNextGenerationIgnoreEdgeAlgo(): void
@@ -57,9 +58,9 @@ class NextGenerationInterfaceTest extends TestCase
 
         self::assertIsArray($next);
         self::assertNotEmpty($next);
-        self::assertSame(CellState::IS_LIVE, $next[1][3]->getState()->value());
-        self::assertSame(CellState::IS_LIVE, $next[1][4]->getState()->value());
-        self::assertSame(CellState::IS_LIVE, $next[2][3]->getState()->value());
-        self::assertSame(CellState::IS_LIVE, $next[2][4]->getState()->value());
+        self::assertSame(self::IS_LIVE, $next[1][3]->getState()->value());
+        self::assertSame(self::IS_LIVE, $next[1][4]->getState()->value());
+        self::assertSame(self::IS_LIVE, $next[2][3]->getState()->value());
+        self::assertSame(self::IS_LIVE, $next[2][4]->getState()->value());
     }
 }

@@ -40,8 +40,8 @@ class GameOfLife
     //todo: decouple to allow different display format
     private function display(array $grid, int $cols, int $rows): void
     {
-        echo "<br />";
-        //echo "\n";
+        echo "<br />"; // when viweing in the browser
+        //echo "\n"; // when viweing in the terminal
         for ($i = 0; $i < $cols; $i++) {
             for ($j = 0; $j < $rows; $j++) {
                 /** @var Cell $cell */

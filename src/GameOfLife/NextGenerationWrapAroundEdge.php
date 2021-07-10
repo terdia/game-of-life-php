@@ -23,8 +23,8 @@ class NextGenerationWrapAroundEdge implements NextGenerationInterface
                     $nextWrapEdges[$i][$j] = new Cell(CellState::live());
                 } elseif (
                     $cell->isAlive()
-                    && ($cell->inUnderPopuatedNeighbourHood()
-                        || $cell->inOverPopuatedNeighbourHood())
+                    && ($cell->isInUnderPopulatedNeighbourHood()
+                        || $cell->isInOverPopulatedNeighbourHood())
                 ) {
                     $nextWrapEdges[$i][$j] = new Cell(CellState::dead());
                 } else {

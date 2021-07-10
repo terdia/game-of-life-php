@@ -64,7 +64,7 @@ class LiveNeighbourFinderTest extends TestCase
         /** @var Cell $cell */
         $cell = $grid[1][1];
         $cell->setTotalLiveNeighbours($finder);
-        self::assertTrue($cell->inOverPopuatedNeighbourHood());
+        self::assertTrue($cell->isInOverPopulatedNeighbourHood());
     }
 
     public function testItHasLessThanTwoLiveNeighbours(): void
@@ -87,6 +87,6 @@ class LiveNeighbourFinderTest extends TestCase
         /** @var Cell $cell */
         $cell = $grid[2][6];
         $cell->setTotalLiveNeighbours($finder);
-        self::assertTrue($cell->inUnderPopuatedNeighbourHood());
+        self::assertTrue($cell->isInUnderPopulatedNeighbourHood());
     }
 }

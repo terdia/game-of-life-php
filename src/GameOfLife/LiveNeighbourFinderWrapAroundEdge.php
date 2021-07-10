@@ -19,7 +19,7 @@ class LiveNeighbourFinderWrapAroundEdge extends LiveNeighbourFinder
         for ($i = -1; $i < 2; $i++) {
             for ($j = -1; $j < 2; $j++) {
                 //wrap around the edges
-                // e.g. (0 + -1 + 10) % 10 = 9; (4 + 1 + 10) % 10 = 5
+                // e.g. (0 + -1 + 10) % 10 = 9; (1 + -1 + 10) % 10 = 0;
                 $colIndex = ($x + $i + $totalCols) % $totalCols;
                 $rowIndex = ($y + $j + $totalrows) % $totalrows;
 

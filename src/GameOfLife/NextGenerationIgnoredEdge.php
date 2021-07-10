@@ -29,8 +29,8 @@ class NextGenerationIgnoredEdge implements NextGenerationInterface
                     $next[$i][$j] = new Cell(CellState::live());
                 } elseif (
                     $cell->isAlive()
-                    && ($cell->inUnderPopuatedNeighbourHood()
-                        || $cell->inOverPopuatedNeighbourHood())
+                    && ($cell->isInUnderPopulatedNeighbourHood()
+                        || $cell->isInOverPopulatedNeighbourHood())
                 ) {
                     $next[$i][$j] = new Cell(CellState::dead());
                 } else {

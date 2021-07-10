@@ -10,18 +10,18 @@ class LiveNeighbourFinderIgnoreEdge extends LiveNeighbourFinder
         $grid          = $this->getGrid();
         $x             = $this->getX();
         $y             = $this->getY();
-        $sumNeighbours = 0;
+        $sumLiveNeighbours = 0;
 
         for ($i = -1; $i < 2; $i++) {
             for ($j = -1; $j < 2; $j++) {
                 /** @var Cell $cell */
                 $cell          = $grid[$x + $i][$y + $j];
-                $sumNeighbours += $cell->isAlive() ? 1 : 0;
+                $sumLiveNeighbours += $cell->isAlive() ? 1 : 0;
             }
         }
 
-        $sumNeighbours -= $grid[$x][$y]->isAlive() ? 1 : 0;
+        $sumLiveNeighbours -= $grid[$x][$y]->isAlive() ? 1 : 0;
 
-        return $sumNeighbours;
+        return $sumLiveNeighbours;
     }
 }
