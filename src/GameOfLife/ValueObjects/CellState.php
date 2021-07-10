@@ -14,14 +14,14 @@ use LogicException;
  */
 class CellState
 {
-    private const LIVE = 1;
-    private const DEAD = 0;
+    public const  IS_LIVE = 1;
+    private const DEAD    = 0;
 
     private int $value;
 
     public function __construct(int $value)
     {
-        if (!in_array($value, [self::LIVE, self::DEAD,], true)) {
+        if (!in_array($value, [self::IS_LIVE, self::DEAD,], true)) {
             throw new LogicException(
                 sprintf("%s is not a valid cell value", $value)
             );
@@ -37,7 +37,7 @@ class CellState
 
     public static function live(): CellState
     {
-        return new self(self::LIVE);
+        return new self(self::IS_LIVE);
     }
 
     public static function dead(): CellState
