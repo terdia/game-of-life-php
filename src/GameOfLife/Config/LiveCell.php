@@ -3,13 +3,13 @@
 namespace App\GameOfLife\Config;
 
 /**
- * Class LiveCellConfig
+ * Class LiveCell
  *
  * provides an oop way to make a specific row->cell alive in the grid
  *
  * @package App\GameOfLife\Config
  */
-class LiveCellConfig
+class LiveCell
 {
     private int   $row;
     private int   $position;

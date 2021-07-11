@@ -3,7 +3,7 @@
 namespace Tests\GameOfLife;
 
 use App\GameOfLife\Board;
-use App\GameOfLife\Config\LiveCellConfig;
+use App\GameOfLife\Config\LiveCell;
 use App\GameOfLife\Factory\GridFactory;
 use App\GameOfLife\NextGenerationIgnoredEdge;
 use App\GameOfLife\NextGenerationWrapAroundEdge;
@@ -15,9 +15,9 @@ class NextGenerationInterfaceTest extends TestCase
     public function testGenerateNextGenerationWrapAroundEdgeAlgo(): void
     {
         $config = [
-            new LiveCellConfig(1, 4),
-            new LiveCellConfig(2, 3),
-            new LiveCellConfig(2, 4),
+            new LiveCell(1, 4),
+            new LiveCell(2, 3),
+            new LiveCell(2, 4),
         ];
         $board  = new Board(new GridFactory(...$config), 4, 8);
 
@@ -41,9 +41,9 @@ class NextGenerationInterfaceTest extends TestCase
     public function testGenerateNextGenerationIgnoreEdgeAlgo(): void
     {
         $config = [
-            new LiveCellConfig(1, 3),
-            new LiveCellConfig(1, 4),
-            new LiveCellConfig(2, 4),
+            new LiveCell(1, 3),
+            new LiveCell(1, 4),
+            new LiveCell(2, 4),
         ];
         $board  = new Board(new GridFactory(...$config), 5, 10); //bigger board
 

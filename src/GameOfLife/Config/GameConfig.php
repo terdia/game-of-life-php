@@ -16,9 +16,9 @@ class GameConfig
         NextGenerationInterface $nextGenerationAlgorithm,
         int $iterations
     ) {
-        $this->iterations              = $iterations;
-        $this->nextGenerationAlgorithm = $nextGenerationAlgorithm;
         $this->board                   = $board;
+        $this->nextGenerationAlgorithm = $nextGenerationAlgorithm;
+        $this->iterations              = $iterations;
     }
 
     public function getBoard(): Board

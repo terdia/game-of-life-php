@@ -4,16 +4,16 @@ use App\GameOfLife\Board;
 use App\GameOfLife\Config\GameConfig;
 use App\GameOfLife\Factory\GridFactory;
 use App\GameOfLife\GameOfLife;
-use App\GameOfLife\Config\LiveCellConfig;
+use App\GameOfLife\Config\LiveCell;
 use App\GameOfLife\NextGenerationIgnoredEdge;
 use App\GameOfLife\NextGenerationWrapAroundEdge;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
 /*$liveCells = [
-    new LiveCellConfig(1, 4),
-    new LiveCellConfig(2, 3),
-    new LiveCellConfig(2, 4),
+    new LiveCell(1, 4),
+    new LiveCell(2, 3),
+    new LiveCell(2, 4),
 ];
 */
 //4, 8
@@ -21,11 +21,11 @@ require_once __DIR__ . '/vendor/autoload.php';
 //$ignoredEdgesAlgorithm    = new NextGenerationIgnoredEdge();
 
 $liveCells = [
-    new LiveCellConfig(0, 2),
-    new LiveCellConfig(1, 3),
-    new LiveCellConfig(2, 1),
-    new LiveCellConfig(2, 2),
-    new LiveCellConfig(2, 3),
+    new LiveCell(0, 2),
+    new LiveCell(1, 3),
+    new LiveCell(2, 1),
+    new LiveCell(2, 2),
+    new LiveCell(2, 3),
 ];
 
 $wrapAroundEdgesAlgorithm = new NextGenerationWrapAroundEdge();

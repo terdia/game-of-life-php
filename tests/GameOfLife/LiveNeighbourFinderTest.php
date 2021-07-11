@@ -3,7 +3,7 @@
 namespace Tests\GameOfLife;
 
 use App\GameOfLife\Cell;
-use App\GameOfLife\Config\LiveCellConfig;
+use App\GameOfLife\Config\LiveCell;
 use App\GameOfLife\Factory\GridFactory;
 use App\GameOfLife\LiveNeighbourFinderIgnoreEdge;
 use App\GameOfLife\LiveNeighbourFinderWrapAroundEdge;
@@ -15,9 +15,9 @@ class LiveNeighbourFinderTest extends TestCase
     public function testItHasExactlyThreeLiveNeighbours(): void
     {
         $config = [
-            new LiveCellConfig(1, 4),
-            new LiveCellConfig(2, 3),
-            new LiveCellConfig(2, 4),
+            new LiveCell(1, 4),
+            new LiveCell(2, 3),
+            new LiveCell(2, 4),
         ];
 
         $factory = new GridFactory(...$config);
@@ -39,17 +39,17 @@ class LiveNeighbourFinderTest extends TestCase
     public function testItHasMoreThanThreeLiveNeighbours(): void
     {
         $config = [
-            new LiveCellConfig(0, 2),
-            new LiveCellConfig(0, 4),
-            new LiveCellConfig(0, 7),
-            new LiveCellConfig(1, 0),
-            new LiveCellConfig(1, 1),
-            new LiveCellConfig(1, 2),
-            new LiveCellConfig(1, 6),
-            new LiveCellConfig(1, 7),
-            new LiveCellConfig(2, 1),
-            new LiveCellConfig(2, 2),
-            new LiveCellConfig(2, 7),
+            new LiveCell(0, 2),
+            new LiveCell(0, 4),
+            new LiveCell(0, 7),
+            new LiveCell(1, 0),
+            new LiveCell(1, 1),
+            new LiveCell(1, 2),
+            new LiveCell(1, 6),
+            new LiveCell(1, 7),
+            new LiveCell(2, 1),
+            new LiveCell(2, 2),
+            new LiveCell(2, 7),
         ];
         $factory = new GridFactory(...$config);
         $grid    = $factory->make(4, 8);
@@ -70,9 +70,9 @@ class LiveNeighbourFinderTest extends TestCase
     public function testItHasLessThanTwoLiveNeighbours(): void
     {
         $config = [
-            new LiveCellConfig(1, 4),
-            new LiveCellConfig(2, 3),
-            new LiveCellConfig(2, 4),
+            new LiveCell(1, 4),
+            new LiveCell(2, 3),
+            new LiveCell(2, 4),
         ];
         $factory = new GridFactory(...$config);
         $grid    = $factory->make(4, 8);
