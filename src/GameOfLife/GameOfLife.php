@@ -7,31 +7,28 @@ use App\GameOfLife\Config\GameConfig;
 class GameOfLife
 {
     private GameConfig              $config;
-    private NextGenerationInterface $nextGeneration;
 
-    public function __construct(
-        GameConfig $config,
-        NextGenerationInterface $nextGeneration
-    ) {
-        $this->config         = $config;
-        $this->nextGeneration = $nextGeneration;
+    public function __construct(GameConfig $config)
+    {
+        $this->config = $config;
     }
 
     public function start(): void
     {
+        $algorithm = $this->config->getNextGenerationAlgorithm();
         $board     = $this->config->getBoard();
         $grid      = $board->getGrid();
         $cols      = $board->getCols();
         $rows      = $board->getRows();
+        $iterations = $this->config->getIterations();
 
         echo "****Input Generation***";
         $this->display($grid, $cols, $rows);
 
         echo "****Next Generations***";
-        $iterations = $this->config->getIterations();
         do {
             $iterations--;
-            $next = $this->nextGeneration->generate($grid, $cols, $rows);
+            $next = $algorithm->generate($grid, $cols, $rows);
             $this->display($next, $cols, $rows);
             $grid = $next;
         } while ($iterations > 0);

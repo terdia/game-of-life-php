@@ -12,8 +12,6 @@ use PHPUnit\Framework\TestCase;
 class NextGenerationInterfaceTest extends TestCase
 {
 
-    private const IS_LIVE = 1;
-
     public function testGenerateNextGenerationWrapAroundEdgeAlgo(): void
     {
         $config = [
@@ -33,22 +31,23 @@ class NextGenerationInterfaceTest extends TestCase
 
         self::assertIsArray($next);
         self::assertNotEmpty($next);
-        self::assertSame(self::IS_LIVE, $next[1][3]->getState()->value());
-        self::assertSame(self::IS_LIVE, $next[1][4]->getState()->value());
-        self::assertSame(self::IS_LIVE, $next[2][3]->getState()->value());
-        self::assertSame(self::IS_LIVE, $next[2][4]->getState()->value());
+
+        self::assertTrue($next[1][3]->isAlive());
+        self::assertTrue($next[1][4]->isAlive());
+        self::assertTrue($next[2][3]->isAlive());
+        self::assertTrue($next[2][4]->isAlive());
     }
 
     public function testGenerateNextGenerationIgnoreEdgeAlgo(): void
     {
         $config = [
+            new LiveCellConfig(1, 3),
             new LiveCellConfig(1, 4),
-            new LiveCellConfig(2, 3),
             new LiveCellConfig(2, 4),
         ];
-        $board  = new Board(new GridFactory(...$config), 4, 8);
+        $board  = new Board(new GridFactory(...$config), 5, 10); //bigger board
 
-        $ignoredEdgesAlgorithm    = new NextGenerationIgnoredEdge();
+        $ignoredEdgesAlgorithm = new NextGenerationIgnoredEdge();
         //act
         $next = $ignoredEdgesAlgorithm->generate(
             $board->getGrid(),
@@ -58,9 +57,10 @@ class NextGenerationInterfaceTest extends TestCase
 
         self::assertIsArray($next);
         self::assertNotEmpty($next);
-        self::assertSame(self::IS_LIVE, $next[1][3]->getState()->value());
-        self::assertSame(self::IS_LIVE, $next[1][4]->getState()->value());
-        self::assertSame(self::IS_LIVE, $next[2][3]->getState()->value());
-        self::assertSame(self::IS_LIVE, $next[2][4]->getState()->value());
+
+        self::assertTrue($next[1][3]->isAlive());
+        self::assertTrue($next[1][4]->isAlive());
+        self::assertTrue($next[2][3]->isAlive());
+        self::assertTrue($next[2][4]->isAlive());
     }
 }

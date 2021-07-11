@@ -3,16 +3,32 @@
 namespace App\GameOfLife\Config;
 
 use App\GameOfLife\Board;
+use App\GameOfLife\NextGenerationInterface;
 
 class GameConfig
 {
-    private int   $iterations;
-    private Board $board;
+    private Board                   $board;
+    private NextGenerationInterface $nextGenerationAlgorithm;
+    private int                     $iterations;
 
-    public function __construct(int $iterations, Board $board)
+    public function __construct(
+        Board $board,
+        NextGenerationInterface $nextGenerationAlgorithm,
+        int $iterations
+    ) {
+        $this->iterations              = $iterations;
+        $this->nextGenerationAlgorithm = $nextGenerationAlgorithm;
+        $this->board                   = $board;
+    }
+
+    public function getBoard(): Board
     {
-        $this->iterations = $iterations;
-        $this->board      = $board;
+        return $this->board;
+    }
+
+    public function getNextGenerationAlgorithm(): NextGenerationInterface
+    {
+        return $this->nextGenerationAlgorithm;
     }
 
     public function getIterations(): int
@@ -20,8 +36,4 @@ class GameConfig
         return $this->iterations;
     }
 
-    public function getBoard(): Board
-    {
-        return $this->board;
-    }
 }

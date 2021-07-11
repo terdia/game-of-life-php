@@ -10,7 +10,7 @@ use App\GameOfLife\NextGenerationWrapAroundEdge;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-/*$configTwo = [
+/*$liveCells = [
     new LiveCellConfig(1, 4),
     new LiveCellConfig(2, 3),
     new LiveCellConfig(2, 4),
@@ -20,7 +20,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 //$ignoredEdgesAlgorithm    = new NextGenerationIgnoredEdge();
 
-$config = [
+$liveCells = [
     new LiveCellConfig(0, 2),
     new LiveCellConfig(1, 3),
     new LiveCellConfig(2, 1),
@@ -29,13 +29,16 @@ $config = [
 ];
 
 $wrapAroundEdgesAlgorithm = new NextGenerationWrapAroundEdge();
-$board                    = new Board(new GridFactory(...$config), 5, 6);
+$board                    = new Board(new GridFactory(...$liveCells), 5, 6);
 
 $iterations = 5;
-$game       = new GameOfLife(
-    new GameConfig($iterations, $board),
-    $wrapAroundEdgesAlgorithm
+$gameConfig = new GameConfig(
+    $board,
+    $wrapAroundEdgesAlgorithm,
+    $iterations
 );
-$game->start();
+
+(new GameOfLife($gameConfig))->start();
+
 
 
