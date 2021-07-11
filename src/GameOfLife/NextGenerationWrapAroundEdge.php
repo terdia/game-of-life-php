@@ -2,38 +2,28 @@
 
 namespace App\GameOfLife;
 
-use App\GameOfLife\ValueObjects\CellState;
-
 class NextGenerationWrapAroundEdge implements NextGenerationInterface
 {
+    use RuleApplier;
 
     public function generate(array $grid, int $cols, int $rows): array
     {
-        $nextWrapEdges = $grid;
+        $next = $grid;
         for ($i = 0; $i < $cols; $i++) {
             for ($j = 0; $j < $rows; $j++) {
                 /** @var Cell $cell */
                 $cell = $grid[$i][$j];
+
                 //set live neighbours for current cell
                 $cell->setTotalLiveNeighbours(
                     $this->getNeighbourCounter($grid, $i, $j)
                 );
 
-                if (!$cell->isAlive() && $cell->hasExactlyThreeLiveNeighbours()) {
-                    $nextWrapEdges[$i][$j] = new Cell(CellState::live());
-                } elseif (
-                    $cell->isAlive()
-                    && ($cell->isInUnderPopulatedNeighbourHood()
-                        || $cell->isInOverPopulatedNeighbourHood())
-                ) {
-                    $nextWrapEdges[$i][$j] = new Cell(CellState::dead());
-                } else {
-                    $nextWrapEdges[$i][$j] = $cell;
-                }
+                $this->applyRuleFor($next, $cell, $i, $j);
             }
         }
 
-        return $nextWrapEdges;
+        return $next;
     }
 
     public function getNeighbourCounter(

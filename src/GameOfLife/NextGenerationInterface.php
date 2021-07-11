@@ -11,4 +11,6 @@ interface NextGenerationInterface
         int $cols,
         int $rows
     ): LiveNeighbourFinder;
+
+    public function applyRuleFor(array &$next, Cell $cell, int $x, int $y): void;
 }

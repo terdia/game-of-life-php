@@ -2,10 +2,9 @@
 
 namespace App\GameOfLife;
 
-use App\GameOfLife\ValueObjects\CellState;
-
 class NextGenerationIgnoredEdge implements NextGenerationInterface
 {
+    use RuleApplier;
 
     public function generate(array $grid, int $cols, int $rows): array
     {
@@ -25,17 +24,7 @@ class NextGenerationIgnoredEdge implements NextGenerationInterface
                     $this->getNeighbourCounter($grid, $i, $j)
                 );
 
-                if (!$cell->isAlive() && $cell->hasExactlyThreeLiveNeighbours()) {
-                    $next[$i][$j] = new Cell(CellState::live());
-                } elseif (
-                    $cell->isAlive()
-                    && ($cell->isInUnderPopulatedNeighbourHood()
-                        || $cell->isInOverPopulatedNeighbourHood())
-                ) {
-                    $next[$i][$j] = new Cell(CellState::dead());
-                } else {
-                    $next[$i][$j] = $cell;
-                }
+                $this->applyRuleFor($next, $cell, $i, $j);
             }
         }
 
