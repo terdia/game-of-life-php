@@ -23,13 +23,13 @@ jobs:
           - "stable"
 
     steps:
-      - uses: actions/checkout@v2
-        -
-      - name: Validate composer.json and composer.lock
-        run: composer validate --strict
+    - uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict
 
-      - name: Run test suite
-        run: ./vendor/bin/phpunit tests --testdox
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Run test suite
+      run: ./vendor/bin/phpunit tests --testdox
