@@ -7,7 +7,7 @@ use function count;
 class LiveNeighbourFinderWrapAroundEdge extends LiveNeighbourFinder
 {
 
-    public function countNeighbours(): int
+    public function countLiveNeighbours(): int
     {
         $grid          = $this->getGrid();
         $x             = $this->getX();

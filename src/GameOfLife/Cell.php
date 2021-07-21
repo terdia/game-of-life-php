@@ -21,7 +21,7 @@ class Cell
 
     public function setTotalLiveNeighbours(LiveNeighbourFinder $neighbourFinder): void
     {
-        $this->totalLiveNeighbours = $neighbourFinder->countNeighbours();
+        $this->totalLiveNeighbours = $neighbourFinder->countLiveNeighbours();
     }
 
     public function isAlive(): bool

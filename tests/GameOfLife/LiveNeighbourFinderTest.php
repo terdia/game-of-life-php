@@ -27,7 +27,7 @@ class LiveNeighbourFinderTest extends TestCase
             $grid, 1, 3
         );
 
-        $liveNeighbours = $finder->countNeighbours();
+        $liveNeighbours = $finder->countLiveNeighbours();
         self::assertSame(3, $liveNeighbours);
 
         /** @var Cell $cell */
@@ -58,7 +58,7 @@ class LiveNeighbourFinderTest extends TestCase
             $grid, 1, 1
         );
 
-        $liveNeighbours = $finder->countNeighbours();
+        $liveNeighbours = $finder->countLiveNeighbours();
         self::assertGreaterThan(3, $liveNeighbours);
 
         /** @var Cell $cell */
@@ -81,7 +81,7 @@ class LiveNeighbourFinderTest extends TestCase
             $grid, 2, 6
         );
 
-        $liveNeighbours = $finder->countNeighbours();
+        $liveNeighbours = $finder->countLiveNeighbours();
         self::assertLessThan(2, $liveNeighbours);
 
         /** @var Cell $cell */

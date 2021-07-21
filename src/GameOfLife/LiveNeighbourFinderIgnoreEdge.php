@@ -5,7 +5,7 @@ namespace App\GameOfLife;
 class LiveNeighbourFinderIgnoreEdge extends LiveNeighbourFinder
 {
 
-    public function countNeighbours(): int
+    public function countLiveNeighbours(): int
     {
         $grid          = $this->getGrid();
         $x             = $this->getX();

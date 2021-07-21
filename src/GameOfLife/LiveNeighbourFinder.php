@@ -30,5 +30,5 @@ abstract class LiveNeighbourFinder
         return $this->y;
     }
 
-    abstract public function countNeighbours(): int;
+    abstract public function countLiveNeighbours(): int;
 }
